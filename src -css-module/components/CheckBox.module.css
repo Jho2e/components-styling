@@ -1,0 +1,73 @@
+/*
+CSS Module 을 사용 할 때에는 
+styles.icon 이런 식으로 객체안에 있는 값을 조회해야 하는데, 
+만약 클래스 이름에 - 가 들어가 있다면 
+다음과 같이 사용해야한다: 
+styles['my-class']
+
+그리고, 만약에 여러개가 있다면 다음과 같이 작성해야한다: 
+${styles.one} ${styles.two}
+
+조건부 스타일링을 해야 한다면 더욱 번거롭게
+${styles.one} ${condition ? styles.two : ''}
+
+== >>>  bind 기능
+, 이 기능을 사용하면 CSS Module 을 조금 더 편하게 사용 할 수 있다
+yarn add classnames
+
+classnames 의 bind 기능을 사용하면, 
+CSS 클래시 이름을 지정해 줄 때 
+cx('클래스이름') 과 같은 형식으로 편하게 사용 할 수 있다.
+
+1. cx('one', 'two')
+2. cx('my-component', {
+  condition: true
+})
+3. cx('my-component', ['another', 'classnames'])
+
+
+/////////
+
+CSS Module 을 사용하고 있는 파일에서 
+클래스 이름을 고유화 하지 않고 전역적 클래스이름을 사용하고 싶다면 
+
+:global .my-global-name {
+    
+}
+과 작성하면 됩니다.
+*/
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label {
+  cursor: pointer;
+}
+
+/* 실제 input 을 숨기기 위한 코드 */
+.checkbox input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox span {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 2rem;
+  margin-right: 0.25rem;
+  color: #adb5bd;
+}
+
+.checked {
+  color: #339af0;
+}
